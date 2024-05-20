@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            body{
+                text-align: center;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                background-color: aliceblue;
+            }
+            h1{
+                color: lightblue;
+            }
+            h2{
+                color: cadetblue;
+                color: rgb(190, 86, 86);
+            }
+        </style>
+    </head>
+
+<body>
+
+<h1>ARREGLOS</h1>
+
+<h2>ORDENACIÓN</h2>
+
+<p>Click en la opcion:</p>
+
+<button onclick="generaarreglo()">GENERA</button>
+<button onclick="imprimearreglo()">IMPRIME</button>
+<button onclick="ordenarreglo()">ORDENA</button>
+<button onclick="reversaarreglo()">INVERSO</button>
+<button onclick="tablaarreglo()">TABLA</button>
+<button onclick="agrega()">AGREGA ELEMENTO</button>
+<button onclick="elimina()">ELIMINA ELEMENTO</button>
+
+<p id="demo"></p>
+
+<script>
+var arreglo = [0, 0, 0, 0 , 0, 0];
+function generaarreglo() {
+    for(i=0;i<6;i++){
+        arreglo[i]=Math.floor(Math.random()*100)+1;
+    }
+}
+
+function imprimearreglo() {
+    document.getElementById("demo").innerHTML = "Arreglo Resultante: "+arreglo;
+}
+
+function ordenarreglo() {
+    arreglo = arreglo.sort(function(a,b){return a-b});
+
+}
+
+function reversaarreglo() {
+    arreglo = arreglo.reverse();
+
+}
+
+function tablaarreglo(){
+    document.getElementById("demo").innerHTML = "Arreglo Resultante: ";
+    var n=arreglo.length();
+    var texto="";
+    texto=texto+"<table border=1><tr>";
+    for(i=0;i<=n;i++)
+    {
+          texto=texto+"<td>"+arreglo[i]+"</td>";
+    }
+    texto=texto+"</tr></table>";
+    document.getElementById("demo").innerHTML = texto;
+    return true;
+  }
+
+  function agrega() {
+    var elemento=Math.floor(Math.random()*100+1);
+    arreglo.push(elemento);
+}
+
+function elimina() {
+    arreglo = arreglo.pop();
+}
+
+</script>
+
+</body>
+
+</html>

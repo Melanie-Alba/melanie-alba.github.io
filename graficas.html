@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<body>
+
+<div id="myPlot" style="width:100%;max-width:700px"></div>
+<div id="myPlot2" style="width:100%;max-width:700px"></div>
+<div id="myPlot3" style="width:100%;max-width:700px"></div>
+
+<script>
+const xArray = ["Programación I", "Ingles PET II", "Física I", "Matemáticas I", "Programación Web I", "Núcleo II"];
+const yArray = [7.5, 8, 8.5, 8.5, 9, 8];
+const data = [{
+ x:xArray,
+ y:yArray,
+ type:"bar",
+ orientation:"v",
+ marker: {color: "rgb(95, 145, 160)"}
+}];
+const layout = {title:"CALIFICACIONES SEGUNDO PARCIAL"};
+Plotly.newPlot("myPlot", data, layout);
+
+const xArray2 = ["Programación I", "Ingles PET II", "Física I", "Matemáticas I", "Programación Web I", "Núcleo II"];
+const yArray2 = [7.5, 8, 8.5, 8.5, 9, 8];
+const data2 = [{
+ x:xArray2,
+ y:yArray2,
+ type:"bar",
+ orientation:"v",
+ marker: {color: "rgb(95, 160, 111)"}
+}];
+const layout2 = {title:"CALIFICACIONES PRIMER PARCIAL"};
+Plotly.newPlot("myPlot2", data2, layout2);
+
+var arreglo=[0, 0, 0, 0, 0, 0];
+for(i=1; i<=6; i++){
+    arreglo[i]=Math.floor(Math.random()*10)+1;
+}
+const xArray3 = ["Programación I", "Ingles PET II", "Física I", "Matemáticas I", "Programación Web I", "Núcleo II"];
+const yArray3 = [arreglo[1], arreglo[2], arreglo[3], arreglo[4], arreglo[5], arreglo[6]];
+const data3 = [{
+ x:xArray3,
+ y:yArray3,
+ type:"bar",
+ orientation:"v",
+ marker: {color: "rgb(190, 86, 86)"}
+}];
+const layout3 = {title:"GRAFICA NÚMEROS ALEATORIOS"};
+Plotly.newPlot("myPlot3", data3, layout3);
+</script>
+
+</body>
+
+</html>

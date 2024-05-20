@@ -1,0 +1,62 @@
+<html>
+
+<head>
+
+  <title>Ejercicio 1 JS</title>
+
+  <script type = "text/javascript">
+
+  function table(){
+    var filas1= parseInt(document.forms[0].filas.value);
+    var columnas1= parseInt(document.forms[0].columnas.value);
+    var num= 0;
+    document.write("<table border=1>");
+    for(i=1;i<=filas1;i++)
+    {
+      document.write("<tr>");
+        for(j=1;j<=columnas1;j++)
+        {
+          num=Math.floor(Math.random()*100)+1;
+          document.write("<td>",num,"</td>")
+        }
+        document.write("</tr>");
+    }
+    document.write("</table>");
+    return true;
+  }
+
+  </script>
+
+  <style>
+    p{
+      background-color: lavenderblush;
+      padding: .5em;
+    }
+    .boton{
+      background-color: lightpink;
+      border: 1px solid rgb(201, 123, 134);
+    }
+    .caja{
+      border: 1px solid rgb(201, 123, 134);
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<form id="myform" onsubmit="return table();">
+
+<p>Cuántas filas: <input class="caja" id="filas" name="filas" type="text" /></p>
+
+<p>Cuántas columnas: <input class="caja" id="columnas" name="columnas" type="text" /></p>
+
+<p><input class="boton" type="submit" /></p>
+
+</form>
+
+</body>
+
+</html>
+

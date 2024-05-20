@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<body>
+<div id="myPlot" style="width:100%;max-width:700px"></div>
+<script>
+let exp = "Math.pow(x, 2)";
+// Generate values
+const xValue = [];
+const yValue = [];
+for (let x = 0; x <= 10; x += 0.1) {
+ xValues.push(x);
+ yValues.push(eval(exp));
+}
+// Display using Plotly
+const data = [{x:xValues, y:yValues, mode:"lines"}];
+const layout = {title: "y = " + exp};
+Plotly.newPlot("myPlot", data, layout);
+</script>
+</body>
+</html>
+
+EJERCICIO 2:
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+<script>
+var ale=[0, 0, 0, 0, 0, 0]
+for (i= 0; i<=6; i++) {
+    ale[i]=Math.floor(Math.random()*10)+1;
+}
+const xValues = ["Progra I", "Inglés V", "Física I", "Mate I" , "Progra Web I", "Nucleo II"];
+const yValues = [ale[0], ale[1], ale[2], ale[3], ale[4], ale[5], ale[6]];
+const barColors = ["rgb(160, 93, 102)", "rgb(201, 123, 134)","#ffb6c1","lavenderblush","brown",];
+new Chart("myChart", {
+ type: "bar",
+ data: {
+  labels: xValues,
+  datasets: [{
+   backgroundColor: barColors,
+   data: yValues
+  }]
+ },
+ options: {
+  legend: {display: false},
+  title: {
+   display: true,
+   text: "World Wine Production 2018"
+  }
+ }
+});
+</script>
+</body>
+</html>

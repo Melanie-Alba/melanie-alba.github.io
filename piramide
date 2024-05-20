@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <script>
+            var caracter = prompt('Introduce tu caracter: ');
+            var lineas = prompt('Cuántas veces: ');
+            var doc = new jsPDF();
+            doc.setFontSize(22);
+            doc.text(20, 20, 'Questions');
+            doc.setFontSize(16);
+            doc.text(20, 30, 'This belongs to: '+ name);
+            var cont=40;
+            for(var i=0; i<=lineas; i++){
+                cont=40+(i*10);
+                for(var j=0; j<=i; j++){
+                    doc.text(20+(j*10), cont, caracter);
+                }
+            }
+        </script>
+    </body>
+</html>

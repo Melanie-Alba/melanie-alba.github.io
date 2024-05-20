@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<body>
+<div id="myPlot" style="width:100%;max-width:700px"></div>
+<script>
+function grafica(){
+    let exp = document.forms[0].opc.value;
+    var inicio1=parseInt(document.forms[0].inicio.value);
+    var fin1=parseInt(document.forms[0].fin.value);
+    if(inicio1!=fin1 && fin1>inicio1){
+    const xValues = [];
+    const yValues = [];
+    for (let x = inicio1; x <= fin1; x += 0.1) {
+        xValues.push(x);
+        yValues.push(eval(exp));
+    }
+    // Display using Plotly
+    const data = [{x:xValues, y:yValues, mode:"lines"}];
+    const layout = {title: "y = " + exp};
+    Plotly.newPlot("myPlot", data, layout);
+    return false;
+}
+else{
+    document.write("No es posible crear una gráfica con esos argumentos");
+}
+}
+
+</script>
+
+<form id="myform" onsubmit="return grafica();">
+    <p>Inicio: <input id="inicio" name="inicio" type="number" /></p>
+    <p>Fin: <input id="fin" name="fin" type="number" /></p>
+    <p>Elige una opción:</p>
+    <select name="opc" id="opc">
+        <option value="Math.sin(x)">Seno</option>
+        <option value="Math.cos(x)">Coseno</option>
+        <option value="Math.tan(x)">Tangente</option>
+        <option value="Math.tant(x)">Cotangente</option>
+    </select>
+    <p><input class="boton" type="submit" /></p>
+</form>
+</body>
+</html>
+

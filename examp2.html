@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Generador de Contraseñas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="jspdf.js"></script>
+
+	<script type="text/javascript" src="jspdf.plugin.addimage.js"></script>
+
+	<script type="text/javascript" src="jspdf.plugin.standard_fonts_metrics.js"></script>
+	<script type="text/javascript" src="jspdf.plugin.split_text_to_size.js"></script>
+	<script type="text/javascript" src="jspdf.plugin.from_html.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .passwords {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            background-color: #f4f4f4;
+            padding: .5em;
+            border: 1px solid #ccc;
+            border-radius: .5em;
+        }
+        .container{
+            background-color: #f4f4f4;
+            padding: .5em;
+            border-radius: .5em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de contraseñas</h1>
+    <form id="passwordForm" onsubmit="return generador();">
+        <p class="container">Cantidad de contraseñas: <input id="numPasswords" name="numPasswords" type="number" min="1" value="1"></p>
+        <p class="container">Longitud de la contraseña: <input id="long" name="long" type="number" min="8" value="8"></p>
+        <p><input type="checkbox" id="mayus" name="mayus" checked>Incluir letras mayúsculas</p>
+        <p><input type="checkbox" id="minus" name="minus" checked>Incluir letras minúsculas</p>
+        <p><input type="checkbox" id="numbers" name="numbers" checked>Incluir números</p>
+        <p><input type="checkbox" id="caracter" name="caracter" checked>Incluir caracteres especiales</p>
+        <button type="submit">Generar Contraseñas</button>
+    </form>
+
+    <p id="generatedPasswords" class="passwords"></p>
+
+    <iframe frameborder="0" width="500" height="100"></iframe>
+
+    <script type="text/javascript">
+        function generador(){
+            const numPasswords = document.getElementById('numPasswords').value;
+            const length = document.getElementById('long').value;
+            const includeUppercase = document.getElementById('mayus').checked;
+            const includeLowercase = document.getElementById('minus').checked;
+            const includeNumbers = document.getElementById('numbers').checked;
+            const includeSpecial = document.getElementById('caracter').checked;
+
+            const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+            const numberChars = '0123456789';
+            const specialChars = '!@#$%^&*()_+[]{}|;:,.<>?';
+
+            let allChars = '';
+            if (includeUppercase) allChars += uppercaseChars;
+            if (includeLowercase) allChars += lowercaseChars;
+            if (includeNumbers) allChars += numberChars;
+            if (includeSpecial) allChars += specialChars;
+
+            if (allChars === '') {
+                alert('Debe seleccionar al menos una opción de caracteres.');
+                return false;
+            }
+
+            const generatePassword = (length) => {
+                let password = '';
+                for (let i = 0; i < length; i++) {
+                    const randomIndex = Math.floor(Math.random() * allChars.length);
+                    password += allChars[randomIndex];
+                }
+                return password;
+            }
+
+            let passwordsOutput = '';
+            for (let i = 0; i < numPasswords; i++) {
+                passwordsOutput += generatePassword(length) + '\n';
+            }
+
+            var doc = new jsPDF();
+            doc.setFontSize(22);
+            doc.text(20, 20, 'Contraseñas: ');
+            doc.setFontSize(16);
+            doc.text(20, 20, passwordsOutput);
+
+            document.getElementById('generatedPasswords').textContent = passwordsOutput;
+            return false;
+
+        }
+    </script>
+</body>
+</html>

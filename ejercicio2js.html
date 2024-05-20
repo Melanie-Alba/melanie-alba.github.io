@@ -1,0 +1,50 @@
+<html>
+
+<head>
+
+  <title>Ejercicio 1 JS</title>
+
+  <script type = "text/javascript">
+
+  function table(){
+    var filas1= parseInt(document.forms[0].filas.value);
+    for(i=1;i<=filas1;i++)
+    {
+      document.write("<p>Este es un párrafo</p>");
+    }
+    return true;
+  }
+
+  </script>
+
+  <style>
+    p{
+      background-color: lavenderblush;
+      padding: .5em;
+    }
+    .boton{
+      background-color: lightpink;
+      border: 1px solid rgb(201, 123, 134);
+    }
+    .caja{
+      border: 1px solid rgb(201, 123, 134);
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<form id="myform" onsubmit="return table();">
+
+<p>Cuántos párrafos: <input class="caja" id="filas" name="filas" type="text" /></p>
+
+<p><input class="boton" type="submit" /></p>
+
+</form>
+
+</body>
+
+</html>
+

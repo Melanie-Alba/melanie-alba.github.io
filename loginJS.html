@@ -1,0 +1,54 @@
+<html>
+
+<head>
+
+  <title>Ejercicio 1 JS</title>
+
+  <script type = "text/javascript">
+
+  function validar(){
+    var usuario1= document.forms[0].usuario.value;
+    var contra1= document.forms[0].contra.value;
+    if(usuario1=="Melanie" && contra1=="1234"){
+        document.write("Acceso permitido");
+    }
+    else{
+        document.write("Acceso denegado");
+    }
+    return true;
+  }
+
+  </script>
+
+  <style>
+    p{
+      background-color: lavenderblush;
+      padding: .5em;
+    }
+    .boton{
+      background-color: lightpink;
+      border: 1px solid rgb(201, 123, 134);
+    }
+    .caja{
+      border: 1px solid rgb(201, 123, 134);
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<form id="myform" onsubmit="return validar();">
+
+<p>Usuario: <input class="caja" id="usuario" name="usuario" type="text" /></p>
+
+<p>Contraseña: <input class="caja" id="contra" name="contra" type="password" /></p>
+
+<p><input class="boton" type="submit" /></p>
+
+</form>
+
+</body>
+
+</html>

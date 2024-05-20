@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+        <script type="text/javascript" src="jspdf.js"></script>
+    
+        <script type="text/javascript" src="jspdf.plugin.addimage.js"></script>
+    
+        <script type="text/javascript" src="jspdf.plugin.standard_fonts_metrics.js"></script>
+        <script type="text/javascript" src="jspdf.plugin.split_text_to_size.js"></script>
+        <script type="text/javascript" src="jspdf.plugin.from_html.js"></script>
+        <title>Piramide</title>
+    </head>
+    <body>
+        <iframe frameborder="0" width="500" height="400"></iframe>
+        <script>
+            var caracter = prompt('Introduce tu caracter: ');
+            var lineas = prompt('Cuantas veces: ');
+            var doc = new jsPDF();
+            doc.setFontSize(22);
+            doc.text(20, 20, 'Questions');
+            doc.setFontSize(16);
+            doc.text(20, 30, 'This belongs to: '+ name);
+            var cont=40;
+            for(var i=0; i<=lineas; i++){
+                cont=40+(i*10);
+                for(var j=0; j<=i; j++){
+                    doc.text(20+(j*10), cont, caracter);
+                }
+            }
+            doc.addPage();
+            for(var i=0; i<=lineas; i++){
+                cont=180+(i*10);
+                for(var j=0; j<=i; j++){
+                    doc.text(100-(j*10), cont, caracter);
+                }
+            }
+            for(var i=0; i<=lineas; i++){
+                cont=180+(i*10);
+                for(var j=0; j<=i; j++){
+                    doc.text(100+(j*10), cont, caracter);
+                }
+            }
+        </script>
+    </body>
+</html>

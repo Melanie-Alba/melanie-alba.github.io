@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor</title>
+    <script type="text/javascript">
+       
+        function convertir(){
+            let grados1= parseInt(document.forms[0].grados.value);
+            let unidades= document.forms[0].op.value;
+            if(unidades=="k"){
+                grados1= grados1+273.15;
+                document.write("La temperatura en Kelvin es:", grados1);
+            }else{
+                grados1= grados1*1.8+32;
+                document.write("La temperatura en Farenheit es:", grados1);
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form id="myform" onsubmit="return convertir();">
+        <h1>Conversor de grados</h1>
+        <p>Introduce los grados centigrados: <input id="grados" name="grados" type="text" /></p>
+        Convertir a:
+        <select name="op" id="op">
+            <option value="k">FARENHEIT</option>
+            <option value="f">KELVIN</option>
+        </select>
+        <p><input class="button" type="submit" /></p>
+     </form>
+</body>
+</html>
